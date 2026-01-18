@@ -1,27 +1,43 @@
-# Automotive Power Window System Simulator (FSM)
+# Simulador de Sistema de Elevalunas Eléctrico Automotriz (FSM)
 
-## 📋 Project Overview
-This repository contains a professional-grade functional simulator of an **Automotive Power Window Control System** developed in **C**. The system is built upon a **Finite State Machine (FSM)** architecture, ensuring robust state transitions and high reliability in safety-critical operations.
+## 📋 Descripción General del Proyecto
+Este repositorio contiene un simulador funcional de nivel profesional de un **Sistema de Control de Ventanas Eléctricas** automotrices desarrollado en **C**. El sistema está diseñado bajo una arquitectura de **Máquina de Estados Finitos (FSM)**, lo que garantiza transiciones de estado robustas y una alta confiabilidad en operaciones críticas para la seguridad.
 
-This implementation features an **Anti-Pinch System**, a mandatory safety standard (FMVSS 118) designed to prevent injuries by detecting motor resistance and triggering an immediate safety reverse.
+Esta implementación incluye un **Sistema Anti-Pinzamiento (Anti-Pinch)**, cumpliendo con los estándares de seguridad industrial (como la normativa FMVSS 118), diseñado para detectar resistencia y activar una reversión de seguridad inmediata para prevenir lesiones.
 
+---
 
+## 🚀 Características Principales
 
-## 🚀 Key Features
-* **Finite State Machine (FSM) Architecture:** Precise management of mutually exclusive states: `IDLE`, `RAISING`, `LOWERING`, and `SAFETY_REVERSE`.
-* **Anti-Pinch Protocol (Safety-Critical):** Automatic obstacle detection during the closing phase, triggering a safety reverse to prevent entrapment.
-* **Security Override (Child Lock):** Logic-level lockout that disables movement commands, simulating real-world passenger safety controls.
-* **Diagnostic Event Logging:** Real-time generation of a `system_logs.txt` file. Includes timestamps for every system event, facilitating post-operation analysis.
-* **Boundary Validation:** Prevents logical over-travel by validating physical window limits (0% to 100% calibration).
-* **Optimized UX:** Cross-platform terminal handling and auditory feedback (`Beep`) for critical alerts.
+* **Arquitectura de Máquina de Estados Finitos (FSM):** Gestión precisa de estados mutuamente excluyentes: `IDLE`, `RAISING`, `LOWERING`, y `SAFETY_REVERSE`.
+* **Protocolo Anti-Pinch (Safety-Critical):** Detección automática de obstáculos durante la fase de cierre, activando una reversa de seguridad inmediata.
+* **Anulación de Seguridad (Child Lock):** Bloqueo de nivel lógico que deshabilita los comandos de movimiento, simulando los controles de seguridad para pasajeros.
+* **Registro de Eventos de Diagnóstico (Logging):** Generación de un archivo `system_logs.txt` en tiempo real con marcas de tiempo, facilitando el análisis post-operación y depuración.
+* **Validación de Límites:** Evita el sobre-desplazamiento lógico mediante la validación de límites físicos (calibración del 0% al 100%).
+* **UX Optimizada:** Manejo de terminal multiplataforma y retroalimentación auditiva para alertas críticas.
 
-## 🛠️ Technical Stack & Implementation
-* **Language:** C (ISO C99/C11)
-* **Concepts:**
-    * **Hardware Abstraction:** Using `structs` to represent the door module.
-    * **State Control:** `Enums` for definitive and safe state management.
-    * **Memory Efficiency:** Low-overhead procedural logic suitable for embedded environments.
-    * **I/O Stream:** File handling for persistent diagnostic logging.
+---
+
+## 🔄 Diagrama de la Máquina de Estados (FSM)
+
+El siguiente diagrama representa la lógica de control del sistema, asegurando que cada transición sea validada antes de ejecutarse:
+
+```mermaid
+stateDiagram-v2
+    [*] --> IDLE
+    IDLE --> RAISING: Tecla 1 (UP)
+    IDLE --> LOWERING: Tecla 2 (DOWN)
+    
+    RAISING --> IDLE: Límite 100% alcanzado
+    RAISING --> SAFETY_REVERSE: Tecla 3 (OBSTACLE)
+    RAISING --> IDLE: Tecla 0 (SHUTDOWN)
+    
+    LOWERING --> IDLE: Límite 0% alcanzado
+    LOWERING --> IDLE: Tecla 0 (SHUTDOWN)
+    
+    SAFETY_REVERSE --> LOWERING: Secuencia Automática de Reversa
+    
+    note right of RAISING: Anti-Pinch Activo
 
 ## 📂 Installation & Execution
 
