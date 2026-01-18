@@ -37,3 +37,16 @@ This implementation features an **Anti-Pinch System**, a mandatory safety standa
    ```bash
    ./window_sim.exe
 
+## 🎮 Controller Interface
+
+The simulator accepts the following hardware-simulated interrupts to control the window system and safety features:
+
+| Key | Action | Description |
+| :---: | :--- | :--- |
+| **1** | **UP** | Initiates window closing sequence. |
+| **2** | **DOWN** | Initiates window opening sequence. |
+| **3** | **OBSTACLE** | Triggers Anti-Pinch safety reverse. |
+| **4** | **CHILD LOCK** | Toggles security lockout mode. |
+| **0** | **SHUTDOWN** | Safely terminates the system and closes logs. |
+
+---
