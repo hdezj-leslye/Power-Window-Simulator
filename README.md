@@ -1,43 +1,43 @@
-# Simulador de Sistema de Elevalunas Eléctrico Automotriz (FSM)
+# Automotive Power Window Control System (FSM)
 
-## 📋 Descripción General del Proyecto
-Este repositorio contiene un simulador funcional de nivel profesional de un **Sistema de Control de Ventanas Eléctricas** automotrices desarrollado en **C**. El sistema está diseñado bajo una arquitectura de **Máquina de Estados Finitos (FSM)**, lo que garantiza transiciones de estado robustas y una alta confiabilidad en operaciones críticas para la seguridad.
+## 📋 Project Overview
+This repository contains a professional-grade functional simulator of an **Automotive Power Window Control System** developed in **C**. The system is architected using a **Finite State Machine (FSM)**, ensuring robust state transitions and high reliability for safety-critical operations.
 
-Esta implementación incluye un **Sistema Anti-Pinzamiento (Anti-Pinch)**, cumpliendo con los estándares de seguridad industrial (como la normativa FMVSS 118), diseñado para detectar resistencia y activar una reversión de seguridad inmediata para prevenir lesiones.
-
----
-
-## 🚀 Características Principales
-
-* **Arquitectura de Máquina de Estados Finitos (FSM):** Gestión precisa de estados mutuamente excluyentes: `IDLE`, `RAISING`, `LOWERING`, y `SAFETY_REVERSE`.
-* **Protocolo Anti-Pinch (Safety-Critical):** Detección automática de obstáculos durante la fase de cierre, activando una reversa de seguridad inmediata.
-* **Anulación de Seguridad (Child Lock):** Bloqueo de nivel lógico que deshabilita los comandos de movimiento, simulando los controles de seguridad para pasajeros.
-* **Registro de Eventos de Diagnóstico (Logging):** Generación de un archivo `system_logs.txt` en tiempo real con marcas de tiempo, facilitando el análisis post-operación y depuración.
-* **Validación de Límites:** Evita el sobre-desplazamiento lógico mediante la validación de límites físicos (calibración del 0% al 100%).
-* **UX Optimizada:** Manejo de terminal multiplataforma y retroalimentación auditiva para alertas críticas.
+A key highlight is the **Anti-Pinch Safety Protocol**, an industry standard (FMVSS 118 compliant) designed to detect physical resistance and trigger an immediate safety reversal to prevent injury.
 
 ---
 
-## 🔄 Diagrama de la Máquina de Estados (FSM)
+## 🚀 Key Features
 
-El siguiente diagrama representa la lógica de control del sistema, asegurando que cada transición sea validada antes de ejecutarse:
+* **Finite State Machine (FSM) Architecture:** Precise management of mutually exclusive states: `IDLE`, `RAISING`, `LOWERING`, and `SAFETY_REVERSE`.
+* **Anti-Pinch Protocol (Safety-Critical):** Automatic obstacle detection during the closing phase, triggering a mandatory safety reverse.
+* **Child Lock Security:** Logic-level lockout that disables movement commands, simulating real-world passenger safety overrides.
+* **Diagnostic Event Logging:** Real-time generation of `system_logs.txt` with timestamps for post-operation analysis and debugging.
+* **Boundary Validation:** Prevents logical over-travel by validating physical window limits (0% to 100% calibration).
+* **Optimized UX:** Cross-platform terminal handling with auditory feedback for critical system alerts.
+
+---
+
+## 🔄 State Machine Diagram (FSM)
+
+The following diagram illustrates the system's control logic, ensuring every transition is validated before execution:
 
 ```mermaid
 stateDiagram-v2
     [*] --> IDLE
-    IDLE --> RAISING: Tecla 1 (UP)
-    IDLE --> LOWERING: Tecla 2 (DOWN)
+    IDLE --> RAISING: Key 1 (UP)
+    IDLE --> LOWERING: Key 2 (DOWN)
     
-    RAISING --> IDLE: Límite 100% alcanzado
-    RAISING --> SAFETY_REVERSE: Tecla 3 (OBSTACLE)
-    RAISING --> IDLE: Tecla 0 (SHUTDOWN)
+    RAISING --> IDLE: 100% Limit Reached
+    RAISING --> SAFETY_REVERSE: Key 3 (OBSTACLE)
+    RAISING --> IDLE: Key 0 (SHUTDOWN)
     
-    LOWERING --> IDLE: Límite 0% alcanzado
-    LOWERING --> IDLE: Tecla 0 (SHUTDOWN)
+    LOWERING --> IDLE: 0% Limit Reached
+    LOWERING --> IDLE: Key 0 (SHUTDOWN)
     
-    SAFETY_REVERSE --> LOWERING: Secuencia Automática de Reversa
+    SAFETY_REVERSE --> LOWERING: Automatic Reverse Sequence
     
-    note right of RAISING: Anti-Pinch Activo
+    note right of RAISING: Anti-Pinch Monitoring Active
 
 ## 📂 Installation & Execution
 
@@ -55,14 +55,9 @@ stateDiagram-v2
 
 ## 🎮 Controller Interface
 
-The simulator accepts the following hardware-simulated interrupts to control the window system and safety features:
-
-| Key | Action | Description |
-| :---: | :--- | :--- |
-| **1** | **UP** | Initiates window closing sequence. |
-| **2** | **DOWN** | Initiates window opening sequence. |
-| **3** | **OBSTACLE** | Triggers Anti-Pinch safety reverse. |
-| **4** | **CHILD LOCK** | Toggles security lockout mode. |
-| **0** | **SHUTDOWN** | Safely terminates the system and closes logs. |
-
----
+The simulator environment listens for specific hardware-simulated interrupts to control the system:
+    [ 1 ] UP: Initiates the window closing sequence.
+    [ 2 ] DOWN: Initiates the window opening sequence.
+    [ 3 ] OBSTACLE: Triggers the Anti-Pinch safety reverse mechanism.
+    [ 4 ] CHILD LOCK: Toggles the security lockout mode (disables inputs).
+    [ 0 ] SHUTDOWN: Safely terminates the system and flushes log files.
