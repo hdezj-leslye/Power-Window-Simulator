@@ -17,28 +17,6 @@ A key highlight is the **Anti-Pinch Safety Protocol**, an industry standard (FMV
 * **Optimized UX:** Cross-platform terminal handling with auditory feedback for critical system alerts.
 
 ---
-
-## 🔄 State Machine Diagram (FSM)
-
-The following diagram illustrates the system's control logic, ensuring every transition is validated before execution:
-
-```mermaid
-stateDiagram-v2
-    [*] --> IDLE
-    IDLE --> RAISING: Key 1 (UP)
-    IDLE --> LOWERING: Key 2 (DOWN)
-    
-    RAISING --> IDLE: 100% Limit Reached
-    RAISING --> SAFETY_REVERSE: Key 3 (OBSTACLE)
-    RAISING --> IDLE: Key 0 (SHUTDOWN)
-    
-    LOWERING --> IDLE: 0% Limit Reached
-    LOWERING --> IDLE: Key 0 (SHUTDOWN)
-    
-    SAFETY_REVERSE --> LOWERING: Automatic Reverse Sequence
-    
-    note right of RAISING: Anti-Pinch Monitoring Active
-
 ## 📂 Installation & Execution
 
 1. **Clone the repository:**
