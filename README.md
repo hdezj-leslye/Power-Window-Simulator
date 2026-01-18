@@ -30,12 +30,3 @@ A key highlight is the **Anti-Pinch Safety Protocol**, an industry standard (FMV
 3. **Run the simulator:**
    ```bash
    ./window_sim.exe
-
-## 🎮 Controller Interface
-
-The simulator environment listens for specific hardware-simulated interrupts to control the system:
-    [ 1 ] UP: Initiates the window closing sequence.
-    [ 2 ] DOWN: Initiates the window opening sequence.
-    [ 3 ] OBSTACLE: Triggers the Anti-Pinch safety reverse mechanism.
-    [ 4 ] CHILD LOCK: Toggles the security lockout mode (disables inputs).
-    [ 0 ] SHUTDOWN: Safely terminates the system and flushes log files.
