@@ -28,3 +28,12 @@ This implementation features an **Anti-Pinch System**, a mandatory safety standa
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/hdezj-leslye/power-window-simulator.git](https://github.com/hdezj-leslye/power-window-simulator.git)
+   
+2. **Compile the source code:**
+   ```bash
+   gcc main.c -o window_sim.exe
+
+3. **Run the simulator:**
+   ```bash
+   ./window_sim.exe
+
