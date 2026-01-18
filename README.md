@@ -14,7 +14,6 @@ A key highlight is the **Anti-Pinch Safety Protocol**, an industry standard (FMV
 * **Child Lock Security:** Logic-level lockout that disables movement commands, simulating real-world passenger safety overrides.
 * **Diagnostic Event Logging:** Real-time generation of `system_logs.txt` with timestamps for post-operation analysis and debugging.
 * **Boundary Validation:** Prevents logical over-travel by validating physical window limits (0% to 100% calibration).
-* **Optimized UX:** Cross-platform terminal handling with auditory feedback for critical system alerts.
 
 ---
 ## 📂 Installation & Execution
