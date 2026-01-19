@@ -4,7 +4,7 @@
 <h4>Finite State Machine–Based Safety-Critical Simulator in C</h4>
 <br>
    <p align="center">
-  <img src="assets/power_window_fsm.jpg" width="550" alt="Automotive Power Window FSM">
+  <img src="assets/power_window.jpg" width="550" alt="Automotive Power Window FSM">
 </p>
 </div>
 
