@@ -4,7 +4,7 @@
 <h4>Finite State Machine–Based Safety-Critical Simulator in C</h4>
 <br>
    <p align="center">
-  <img src="assets/power_window.jpg" width="550" alt="Automotive Power Window FSM">
+  <img src="assets/power_window.jpeg" width="550" alt="Automotive Power Window FSM">
 </p>
 </div>
 
@@ -60,3 +60,12 @@ cd power-window-simulator</code></pre>
 <li>
    Designed for single-window control (scaling to multiple windows is not yet implemented).
 </li>
+
+## LICENSE
+
+<p>
+Distributed under the Unlicense License. 
+See LICENSE for more information.
+</p>
+
+## CONTACT
