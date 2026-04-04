@@ -69,3 +69,9 @@ See LICENSE for more information.
 </p>
 
 ## CONTACT
+> **Leslye Hernández Jiménez**
+> *IT & Communications Engineering*
+>
+> **LinkedIn**: [View Profile](https://www.linkedin.com/in/leslye-hernandez-jimenez)
+> **Email**: [hdezj.leslye@gmail.com](mailto:hdezj.leslye@gmail.com)
+
